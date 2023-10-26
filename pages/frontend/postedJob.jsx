@@ -21,7 +21,7 @@ export default function PostedJobs() {
     if (!id || !Cookies.get('token')) {
       router.push('/auth/login');
     }
-  }, [user, id, Cookies]);
+  }, [router, user, id]);
 
   const { data, error, isLoading } = useSWR('/getMyPostedJobs', () =>
     get_my_posted_job(id)
@@ -49,11 +49,11 @@ export default function PostedJobs() {
             <div className="w-full h-20 bg-gray-50 text-indigo-600 font-bold flex items-center justify-center flex-col">
               <h1 className="text-3xl">Posted Jobs</h1>
             </div>
-            <Box className="w-full h-full px-4 py-4 flex  overflow-y-auto  items-start justify-center flex-wrap">
+            <div className="w-full h-full px-4 py-4 flex  overflow-y-auto  items-start justify-center flex-wrap">
               {myJobs?.map((job, index) => (
                 <JobsCard key={index} job={job} posted={true} />
               ))}
-            </Box>
+            </div>
           </div>
         </>
       )}
