@@ -23,16 +23,14 @@ const getPostedJobs = async (req, res) => {
       'Error in getting a specifed Job job (server) => ',
       error
     );
-    return res
-      .status(403)
-      .json({
-        success: false,
-        message: 'Something Went Wrong Please Retry login !',
-      });
+    return res.status(403).json({
+      success: false,
+      message: 'Something Went Wrong Please Retry login !',
+    });
   }
 };
 
-export default async (req, res) => {
+GetPostedJobs = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
@@ -47,3 +45,4 @@ export default async (req, res) => {
         .json({ success: false, message: 'Invalid Request' });
   }
 };
+export default GetPostedJobs;

@@ -48,12 +48,10 @@ const postAJob = async (req, res) => {
   });
 
   if (error)
-    return res
-      .status(401)
-      .json({
-        success: false,
-        message: error.details[0].message.replace(/['"]+/g, ''),
-      });
+    return res.status(401).json({
+      success: false,
+      message: error.details[0].message.replace(/['"]+/g, ''),
+    });
 
   try {
     const creatingUser = await Job.create({
@@ -74,16 +72,14 @@ const postAJob = async (req, res) => {
       .json({ success: true, message: 'Job Posted Successfully !' });
   } catch (error) {
     console.log('Error in posting a job (server) => ', error);
-    return res
-      .status(500)
-      .json({
-        success: false,
-        message: 'Something Went Wrong Please Retry login !',
-      });
+    return res.status(500).json({
+      success: false,
+      message: 'Something Went Wrong Please Retry login !',
+    });
   }
 };
 
-export default async (req, res) => {
+const PostAJob = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
@@ -98,3 +94,4 @@ export default async (req, res) => {
         .json({ success: false, message: 'Invalid Request' });
   }
 };
+export default PostAJob;

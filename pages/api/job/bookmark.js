@@ -109,7 +109,7 @@ export const delete_bookmark_job = async (req, res) => {
   }
 };
 
-export default async (req, res) => {
+ const BookMark = async (req, res) => {
   await ConnectDB();
   switch (req.method) {
     case 'POST':
@@ -131,3 +131,5 @@ export default async (req, res) => {
       return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 };
+
+export default BookMark;

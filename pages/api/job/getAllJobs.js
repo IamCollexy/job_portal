@@ -9,16 +9,14 @@ const getAllJobs = async (req, res) => {
     return res.status(200).json({ success: true, data: gettingjobs });
   } catch (error) {
     console.log('Error in getting a job (server) => ', error);
-    return res
-      .status(500)
-      .json({
-        success: false,
-        message: 'Something Went Wrong Please Retry login  !',
-      });
+    return res.status(500).json({
+      success: false,
+      message: 'Something Went Wrong Please Retry login  !',
+    });
   }
 };
 
-export default async (req, res) => {
+const GetAllJobs = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
@@ -31,3 +29,5 @@ export default async (req, res) => {
         .json({ success: false, message: 'Invalid Request' });
   }
 };
+
+export default GetAllJobs;

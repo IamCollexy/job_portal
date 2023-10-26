@@ -73,29 +73,23 @@ const applyToJob = async (req, res) => {
         user,
       });
       if (error)
-        return res
-          .status(401)
-          .json({
-            success: false,
-            message: error.details[0].message.replace(/['"]+/g, ''),
-          });
+        return res.status(401).json({
+          success: false,
+          message: error.details[0].message.replace(/['"]+/g, ''),
+        });
 
       const newJobApplication = AppliedJob.create(jobApplication);
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: 'Job application submitted successfully !',
-        });
+      return res.status(200).json({
+        success: true,
+        message: 'Job application submitted successfully !',
+      });
     });
   } catch (error) {
     console.log('error in apply job (server) => ', error);
-    return res
-      .status(500)
-      .json({
-        success: false,
-        message: 'something went wrong please retry login !',
-      });
+    return res.status(500).json({
+      success: false,
+      message: 'something went wrong please retry login !',
+    });
   }
 };
 
@@ -105,7 +99,7 @@ export const config = {
   },
 };
 
-export default async (req, res) => {
+const ApplyToJob = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
@@ -120,3 +114,5 @@ export default async (req, res) => {
         .json({ success: false, message: 'Invalid Request' });
   }
 };
+
+export default ApplyToJob;

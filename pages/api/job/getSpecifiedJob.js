@@ -26,7 +26,7 @@ const getSpecifiedJob = async (req, res) => {
   }
 };
 
-export default async (req, res) => {
+const GetSpecifiedJob = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
@@ -40,3 +40,4 @@ export default async (req, res) => {
         .json({ success: false, message: 'Invalid Request' });
   }
 };
+export default GetSpecifiedJob;
