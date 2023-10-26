@@ -30,7 +30,7 @@ const getPostedJobs = async (req, res) => {
   }
 };
 
-GetPostedJobs = async (req, res) => {
+const GetPostedJobs = async (req, res) => {
   await ConnectDB();
   const { method } = req;
   switch (method) {
