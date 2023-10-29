@@ -2,6 +2,8 @@ import ConnectDB from '@/DB/connectDB';
 import validateToken from '@/middleware/tokenValidation';
 import Job from '@/models/Job';
 
+//Endpoints
+// handling request from Errand Boys processing and returning a response
 const getPostedJobs = async (req, res) => {
   await ConnectDB();
   const data = req.query;
